@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Car Insurance</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">CAR INSURANCE</string>
+    <string name="hint_email">Ingresa tu mail</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar sesión</string>
+    <string name="action_sign_in_ime">Loguear</string>
 </resources>
