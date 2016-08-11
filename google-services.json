@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "87735150791",
+    "firebase_url": "https://car-insurance-88cea.firebaseio.com",
+    "project_id": "car-insurance-88cea",
+    "storage_bucket": "car-insurance-88cea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87735150791:android:0bae55b5ab5bb5af",
+        "android_client_info": {
+          "package_name": "com.abrsoftware.carinsurance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87735150791-tl5bias0ud3o59qtiittdplmf82ll08p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.abrsoftware.carinsurance",
+            "certificate_hash": "9B56C79B4115540073CEA1ABE768837551CBC8B5"
+          }
+        },
+        {
+          "client_id": "87735150791-kjtbm0dpj5mgbbovfdmq544bhob2t9ad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFCAyI5MT2CTfBSD4nZrooYsnUJ6kl8fI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87735150791-kjtbm0dpj5mgbbovfdmq544bhob2t9ad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,11 @@
-package com.abrsoftware.carinsurance;
+package com.abrsoftware.carinsurance.login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import com.abrsoftware.carinsurance.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
