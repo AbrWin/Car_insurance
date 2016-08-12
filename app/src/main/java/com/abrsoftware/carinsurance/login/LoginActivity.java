@@ -11,5 +11,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        LoginFragment loginFragment = (LoginFragment)getSupportFragmentManager().findFragmentById(R.id.login_container);
+        if(loginFragment == null){
+            loginFragment = LoginFragment.newInstance();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.login_container, loginFragment)
+                    .commit();
+        }
     }
 }
