@@ -1,28 +1,34 @@
 package com.abrsoftware.carinsurance.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.telecom.Call;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.abrsoftware.carinsurance.R;
+import com.abrsoftware.carinsurance.notifications.PushNotificationsActivity;
 
 
-public class LoginFragment extends Fragment implements LoginContract.View{
+public class LoginFragment extends Fragment implements LoginContract.View {
 
+    private LoginContract.Presenter mPresenter;
     private View mLoginForm;
     private View mLoginProgress;
     private TextInputEditText mEmail;
     private TextInputEditText mPassword;
     private TextInputLayout mEmailError;
     private TextInputLayout mPasswordError;
+    private Callback mCallback;
     private Button mSingInBtn;
 
     public LoginFragment() {
@@ -50,11 +56,11 @@ public class LoginFragment extends Fragment implements LoginContract.View{
         mLoginForm = rootView.findViewById(R.id.login_form);
         mLoginProgress = rootView.findViewById(R.id.login_progress);
 
-        mEmail = (TextInputEditText)rootView.findViewById(R.id.tv_mail);
-        mPassword = (TextInputEditText)rootView.findViewById(R.id.tv_password);
-        mEmailError = (TextInputLayout)rootView.findViewById(R.id.til_email_error);
-        mPasswordError = (TextInputLayout)rootView.findViewById(R.id.til_password_error);
-        mSingInBtn = (Button)rootView.findViewById(R.id.b_sign_in);
+        mEmail = (TextInputEditText) rootView.findViewById(R.id.tv_mail);
+        mPassword = (TextInputEditText) rootView.findViewById(R.id.tv_password);
+        mEmailError = (TextInputLayout) rootView.findViewById(R.id.til_email_error);
+        mPasswordError = (TextInputLayout) rootView.findViewById(R.id.til_password_error);
+        mSingInBtn = (Button) rootView.findViewById(R.id.b_sign_in);
 
         mailTextListener(mEmail);
 
@@ -65,12 +71,19 @@ public class LoginFragment extends Fragment implements LoginContract.View{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if(context instanceof Callback){
+            mCallback = (Callback)context;
+        }else {
+            throw new RuntimeException(context.toString()
+                    + " debe implementar Callback");
+        }
 
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        mCallback = null;
     }
 
     @Override
@@ -121,46 +134,60 @@ public class LoginFragment extends Fragment implements LoginContract.View{
 
     @Override
     public void showprogress(Boolean show) {
-
+        mLoginForm.setVisibility(show ? View.GONE : View.VISIBLE);
+        mLoginProgress.setVisibility(show ? View.GONE : View.VISIBLE);
     }
 
     @Override
     public void setMailError(String error) {
-
+        mEmailError.setError(error);
     }
 
     @Override
     public void setPasswordError(String error) {
-
+        mPasswordError.setError(error);
     }
 
     @Override
     public void showLoginError(String msg) {
-
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showPushNotificaton() {
-
+       startActivity(new Intent(getActivity(), PushNotificationsActivity.class));
+        getActivity().finish();
     }
 
     @Override
     public void showGooglePlayServicesDialog(int errorCode) {
-
+       mCallback.onInvokeGooglePlayServices(errorCode);
     }
 
     @Override
     public void showGooglePlayServicesError() {
-
+        Toast.makeText(getActivity(),
+                "Se requiere Google Play Services para usar la app", Toast.LENGTH_LONG)
+                .show();
     }
 
     @Override
     public void showNetworkError() {
-
+        Toast.makeText(getActivity(),
+                "La red no está disponible. Conéctese y vuelva a intentarlo", Toast.LENGTH_LONG)
+                .show();
     }
 
     @Override
     public void setPresenter(LoginContract.Presenter presenter) {
+        if(presenter != null){
+            mPresenter = presenter;
+        }else{
+            new RuntimeException("El presentador no puede ser nulo");
+        }
 
+    }
+    interface Callback{
+        void onInvokeGooglePlayServices(int codeError);
     }
 }

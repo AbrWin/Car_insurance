@@ -8,4 +8,5 @@
     <string name="hint_password">Contraseña</string>
     <string name="action_sign_in">Iniciar sesión</string>
     <string name="action_sign_in_ime">Loguear</string>
+    <string name="title_activity_push_notifications">PushNotificationsActivity</string>
 </resources>
