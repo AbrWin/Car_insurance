@@ -52,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
+                android:theme="@style/LoginEditText"
                 android:maxLines="1"
                 android:singleLine="true" />
 
