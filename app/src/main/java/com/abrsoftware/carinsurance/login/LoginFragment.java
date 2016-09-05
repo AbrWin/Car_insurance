@@ -89,6 +89,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     @Override
     public void onResume() {
         super.onResume();
+        mPresenter.start();
     }
 
     private void mailTextListener(final TextInputEditText mEmail) {
@@ -130,6 +131,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     }
 
     private void attemptLogin() {
+        mPresenter.attemptLogin(mEmail.getText().toString(), mPassword.getText().toString());
     }
 
     @Override

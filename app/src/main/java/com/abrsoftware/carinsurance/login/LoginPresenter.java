@@ -19,46 +19,52 @@ public class LoginPresenter implements LoginContract.Presenter, LoginInteractor.
 
     @Override
     public void attemptLogin(String mail, String password) {
-
+        mLoginView.showprogress(true);
+        mLoginInteractor.login(mail, password, this);
     }
 
     @Override
     public void start() {
-
+        // Comprobar si el usuario está logueado
     }
 
     @Override
     public void onEmailError(String msg) {
-
+        mLoginView.showprogress(false);
+        mLoginView.setMailError(msg);
     }
 
     @Override
     public void onPasswordError(String msg) {
-
+        mLoginView.showprogress(false);
+        mLoginView.setPasswordError(msg);
     }
 
     @Override
     public void onNetworkConnectFailed() {
-
+        mLoginView.showprogress(false);
+        mLoginView.showNetworkError();
     }
 
     @Override
     public void onBeUserResolvableError(int errorCode) {
-
+        mLoginView.showprogress(false);
+        mLoginView.showGooglePlayServicesDialog(errorCode);
     }
 
     @Override
     public void onGooglePlayServicesFailed() {
-
+        mLoginView.showGooglePlayServicesError();
     }
 
     @Override
     public void onAuthFailed(String msg) {
-
+        mLoginView.showprogress(false);
+        mLoginView.showLoginError(msg);
     }
 
     @Override
     public void onAuthSuccess() {
-
+        mLoginView.showPushNotificaton();
     }
 }

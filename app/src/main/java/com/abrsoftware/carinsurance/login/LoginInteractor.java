@@ -24,7 +24,7 @@ public class LoginInteractor {
 
     public LoginInteractor(Context context, FirebaseAuth firebaseAuth) {
         mContext = context;
-        if (mFirebaseAuth != null) {
+        if (firebaseAuth != null) {
             mFirebaseAuth = firebaseAuth;
         } else {
             throw new RuntimeException("La instancia de FirebaseAuth no puede ser null");
