@@ -107,7 +107,6 @@ public class LoginInteractor {
                 }else{
                     callback.onAuthSuccess();
                 }
-
             }
         });
     }
