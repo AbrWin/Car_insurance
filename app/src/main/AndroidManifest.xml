@@ -23,7 +23,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <!--SERVICES BY FIREBASE-->
-        <service android:name=".service.FCMService">
+        <service android:name=".service.IFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

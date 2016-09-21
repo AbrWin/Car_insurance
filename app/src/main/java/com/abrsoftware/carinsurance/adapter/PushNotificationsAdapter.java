@@ -35,8 +35,8 @@ public class PushNotificationsAdapter extends RecyclerView.Adapter<PushNotificat
         PushNotification pushNotification = pushNotifications.get(position);
         holder.title.setText(pushNotification.getmTitle());
         holder.description.setText(pushNotification.getmDescription());
-        holder.discount.setText(pushNotification.getmDiscount());
-        holder.expiryDate.setText(pushNotification.getmExpiryDate());
+        holder.discount.setText(String.format("%d%%", (int) (pushNotification.getmDiscount() * 100)));
+        holder.expiryDate.setText(String.format("Válido hasta el %s", pushNotification.getmExpiryDate()));
 
     }
 

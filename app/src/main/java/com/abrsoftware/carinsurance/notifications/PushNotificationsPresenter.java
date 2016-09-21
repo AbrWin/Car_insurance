@@ -1,5 +1,7 @@
 package com.abrsoftware.carinsurance.notifications;
 
+import android.text.TextUtils;
+
 import com.abrsoftware.carinsurance.model.PushNotification;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -16,6 +18,8 @@ public class PushNotificationsPresenter implements PushNotificationsContract.Pre
     public PushNotificationsPresenter(PushNotificationsContract.View notificationView, FirebaseMessaging fCMInteractor) {
         mNotificationView = notificationView;
         mFCMInteractor = fCMInteractor;
+
+        notificationView.setPresenter(this);
     }
 
     @Override
@@ -31,7 +35,16 @@ public class PushNotificationsPresenter implements PushNotificationsContract.Pre
 
     @Override
     public void savePushMessage(String title, String description, String expiryDate, String discount) {
+        PushNotification pushNotification = new PushNotification();
+        pushNotification.setmTitle(title);
+        pushNotification.setmDescription(description);
+        pushNotification.setmExpiryDate(expiryDate);
+        pushNotification.setmDiscount(TextUtils.isEmpty(discount) ? 0 : Float.parseFloat(discount));
 
+        PushNotificationsRepository.getInstance().savePushNotification(pushNotification);
+
+        mNotificationView.showEmptyState(false);
+        mNotificationView.popPushNotification(pushNotification);
     }
 
     @Override

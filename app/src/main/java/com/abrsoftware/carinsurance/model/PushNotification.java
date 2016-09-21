@@ -11,7 +11,7 @@ public class PushNotification {
     private String mTitle;
     private String mDescription;
     private String mExpiryDate;
-    private String mDiscount;
+    private float mDiscount;
 
     public PushNotification() {
         id = UUID.randomUUID().toString();
@@ -25,11 +25,11 @@ public class PushNotification {
         this.id = id;
     }
 
-    public String getmDiscount() {
+    public float getmDiscount() {
         return mDiscount;
     }
 
-    public void setmDiscount(String mDiscount) {
+    public void setmDiscount(float mDiscount) {
         this.mDiscount = mDiscount;
     }
 
