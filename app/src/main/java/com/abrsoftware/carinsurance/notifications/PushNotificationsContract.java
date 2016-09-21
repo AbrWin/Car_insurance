@@ -4,6 +4,7 @@ import com.abrsoftware.carinsurance.base.BasePresenter;
 import com.abrsoftware.carinsurance.base.BaseView;
 import com.abrsoftware.carinsurance.model.PushNotification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,13 +13,18 @@ import java.util.List;
 
 public class PushNotificationsContract {
     interface View extends BaseView<Presenter>{
-        void showNotifications(List<PushNotification> notifications);
-        void showNoMessagesView();
+        void showNotifications(ArrayList<PushNotification> notifications);
+
+        void showEmptyState(boolean empty);
+
+        void popPushNotification(PushNotification pushMessage);
 
     }
 
     interface Presenter extends BasePresenter{
         void registerAppClient();
         void loadNotifications();
+        void savePushMessage(String title, String description,
+                             String expiryDate, String discount);
     }
 }
