@@ -9,4 +9,6 @@
     <string name="action_sign_in">Iniciar sesión</string>
     <string name="action_sign_in_ime">Loguear</string>
     <string name="title_activity_push_notifications">Notificaciones</string>
+    <string name="btn_redimir">Redimir</string>
+    <string name="no_message_text">No hay una notificación todavia</string>
 </resources>
