@@ -11,4 +11,6 @@
     <string name="title_activity_push_notifications">Notificaciones</string>
     <string name="btn_redimir">Redimir</string>
     <string name="no_message_text">No hay una notificación todavia</string>
+    <string name="acept">Aceptar</string>
+    <string name="send_txt">Enviar datos</string>
 </resources>
